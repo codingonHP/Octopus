@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octopus", "Octopus\Octopus.csproj", "{000C6E27-2150-4E24-A3FC-E644D8AB4267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctopusContainer", "OctopusContainer\OctopusContainer.csproj", "{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octopus Unit Test", "Octopus Unit Test\Octopus Unit Test.csproj", "{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{000C6E27-2150-4E24-A3FC-E644D8AB4267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{000C6E27-2150-4E24-A3FC-E644D8AB4267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{000C6E27-2150-4E24-A3FC-E644D8AB4267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

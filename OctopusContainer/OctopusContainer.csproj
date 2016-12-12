@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{000C6E27-2150-4E24-A3FC-E644D8AB4267}</ProjectGuid>
+    <ProjectGuid>{2C40F2EF-C853-42F0-ACF8-690DCE487A3C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Octopus</RootNamespace>
-    <AssemblyName>Octopus</AssemblyName>
+    <RootNamespace>OctopusContainer</RootNamespace>
+    <AssemblyName>OctopusContainer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\InjectableAttribute.cs" />
-    <Compile Include="Attributes\InjectAttribute.cs" />
-    <Compile Include="Container\Container.cs" />
-    <Compile Include="Container\ContainerFactory.cs" />
-    <Compile Include="Container\ContainerManager.cs" />
-    <Compile Include="Container\Finder.cs" />
-    <Compile Include="Container\IContainer.cs" />
-    <Compile Include="Container\IContainerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
