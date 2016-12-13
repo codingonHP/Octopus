@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctopusContainer", "Octopus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octopus Unit Test", "Octopus Unit Test\Octopus Unit Test.csproj", "{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionSolverExtension", "ExpressionSolverExtension\ExpressionSolverExtension.csproj", "{C8E5D3B5-AB66-4CAD-B4D7-97BB724B562A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionSolver", "ExpressionSolver\ExpressionSolver.csproj", "{378003C7-0D8F-46C9-ABA8-4FDB1C19F68A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCBE5147-18F3-4777-A6C4-38AA3DB6B423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8E5D3B5-AB66-4CAD-B4D7-97BB724B562A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8E5D3B5-AB66-4CAD-B4D7-97BB724B562A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8E5D3B5-AB66-4CAD-B4D7-97BB724B562A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8E5D3B5-AB66-4CAD-B4D7-97BB724B562A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378003C7-0D8F-46C9-ABA8-4FDB1C19F68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378003C7-0D8F-46C9-ABA8-4FDB1C19F68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378003C7-0D8F-46C9-ABA8-4FDB1C19F68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378003C7-0D8F-46C9-ABA8-4FDB1C19F68A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,6 @@ namespace Octopus_Unit_Test
     [TestClass]
     public class OctopusUnitTest
     {
-
         [TestMethod]
         public void ClassWithSingleInjectWorks()
         {
@@ -25,18 +24,19 @@ namespace Octopus_Unit_Test
         [TestMethod]
         public void ExpressionSolverTest()
         {
-            ExpressionSolver expressionSolver = new ExpressionSolver("2+2");
+            ExpressionSolver.ExpressionSolver expressionSolver = new ExpressionSolver.ExpressionSolver("2+2");
+        
             var result = expressionSolver.Solve();
 
             Assert.AreEqual(4, result.Output);
 
-            expressionSolver = new ExpressionSolver("2\\2");
+            expressionSolver = new ExpressionSolver.ExpressionSolver("2\\2");
             result = expressionSolver.Solve();
 
             Assert.AreEqual(false, result.Computed);
             Assert.AreEqual("Symbol not recognized", result.Exception.Message);
 
-            expressionSolver = new ExpressionSolver("2*8");
+            expressionSolver = new ExpressionSolver.ExpressionSolver("2*8");
             result = expressionSolver.Solve();
 
             Assert.AreEqual(true, result.Computed);

@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.IO;
+using System.Reflection;
 using Octopus.Container.Interfaces;
 
 namespace Octopus.Container
@@ -31,27 +33,67 @@ namespace Octopus.Container
 
         }
 
-        public void Init(object @this)
+        public void ScanAssemblyList(object @this, string[] locations, params Assembly[] assemblies)
         {
-            var calledFromAssembly = @this.GetType().Module.Assembly;
-            var declaringType = @this.GetType();
+            Assembly calledFromAssembly = @this.GetType().Module.Assembly;
+           
+
+            foreach (var location in locations)
+            {
+                if (!string.IsNullOrEmpty(location))
+                {
+                    var files = Directory.GetFiles(location);
+
+                    foreach (var filePath in files)
+                    {
+                        if (Path.GetExtension(filePath) == ".dll")
+                        {
+                            var assembly = Assembly.LoadFile(filePath);
+                            _containerManager.ScanAssembly(assembly);
+                        }
+                    }
+                }
+            }
+
+            foreach (var assembly in assemblies)
+            {
+                _containerManager.ScanAssembly(assembly);
+            }
 
             _containerManager.ScanAssembly(calledFromAssembly);
-            _containerManager.ActivateTypes(@this, declaringType);
+
+        }
+
+        public void Init(object @this)
+        {
+            ScanAssemblyList(@this, new string[0]);
+            ActivateType(@this);
         }
 
         public void Init(object @this, params Assembly[] assemblies)
         {
-            foreach (var assembly in assemblies)
-            {
-                Init(@this, assembly);
-            }
+            ScanAssemblyList(@this, new string[0], assemblies);
+            ActivateType(@this);
         }
 
         public void Init(object @this, string location)
         {
-            var assembly = Assembly.LoadFile(location);
-            Init(@this, assembly);
+            ScanAssemblyList(@this, new[] { location });
+            ActivateType(@this);
         }
+
+        public void Init(object @this, string[] locations, params Assembly[] assemblies)
+        {
+            ScanAssemblyList(@this, locations, assemblies);
+            ActivateType(@this);
+        }
+
+        private void ActivateType(object @this)
+        {
+            var declaringType = @this.GetType();
+            _containerManager.ActivateTypes(@this, declaringType);
+        }
+
+
     }
 }

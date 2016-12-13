@@ -73,6 +73,7 @@ namespace Octopus.Container
 
         internal void ActivateCollection(object @this, PropertyInfo propertyInfo)
         {
+          
             Type genericArg = propertyInfo.PropertyType.GenericTypeArguments[0];
             List<Type> typeList = _injectableTypes.Where(i => i.GetInterface(genericArg.Name) != null).ToList();
 
@@ -86,13 +87,14 @@ namespace Octopus.Container
             }
 
             propertyInfo.SetValue(@this, collectionInstance);
+          
         }
 
         internal void AddToInjectableTypesCollection(List<Type> foundInjectables)
         {
             foreach (var foundInjectable in foundInjectables)
             {
-                if (!_injectableTypes.Contains(foundInjectable))
+                if (_injectableTypes.FirstOrDefault(t => t.FullName == foundInjectable.FullName) == null)
                 {
                     _injectableTypes.Add(foundInjectable);
                 }

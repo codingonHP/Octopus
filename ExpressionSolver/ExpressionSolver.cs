@@ -1,26 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Octopus.Attributes;
 using Octopus.Container;
 
-namespace Octopus_Unit_Test
+namespace ExpressionSolver
 {
-    public class Expression
-    {
-        public Expression(string expressionText)
-        {
-            ExpressionText = expressionText;
-        }
-
-        public string ExpressionText { get; }
-
-        public LeftOperand LeftOperand { get; set; }
-        public RightOperand RightOperand { get; set; }
-        public Operator Operator { get; set; }
-    }
-
     public class ExpressionSolver
     {
+        public string DefaultExtensionPath { get; set; }
         public string Expression { get; }
 
         [Inject]
@@ -31,10 +19,14 @@ namespace Octopus_Unit_Test
 
         public ExpressionSolver(string expressionText)
         {
+            if (string.IsNullOrEmpty(DefaultExtensionPath))
+            {
+                DefaultExtensionPath = @"C:\Users\ANANDV4\Documents\Visual Studio 2015\Projects\Octopus\Octopus Unit Test\Extensions";
+            }
             Expression = expressionText;
 
             Container container = Container.Instance;
-            container.Init(this);
+            container.Init(this,new []{ DefaultExtensionPath });
         }
 
         public Result Solve()
@@ -64,31 +56,5 @@ namespace Octopus_Unit_Test
         {
             return ExpressionParser.ParseTextToExpression(expression);
         }
-    }
-
-
-    public class Result
-    {
-        public bool Computed { get; set; }
-        public object Output { get; set; }
-        public Type ComputedType { get; set; }
-        public Exception Exception { get; set; }
-
-    }
-
-    public class LeftOperand
-    {
-        public object Value { get; set; }
-    }
-
-    public class RightOperand
-    {
-        public object Value { get; set; }
-    }
-
-    public class Operator
-    {
-        public char Symbol { get; set; }
-        public string Name { get; set; }
     }
 }

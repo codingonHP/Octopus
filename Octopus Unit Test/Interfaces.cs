@@ -12,20 +12,5 @@ namespace Octopus_Unit_Test
         bool ValidateLogin(string userName);
     }
 
-    public interface IOperation
-    {
-        Expression OperationResult(Expression expression);
-    }
-
-    public interface IExpressionParser
-    {
-        Expression ParseTextToExpression(string expression);
-    }
-
-
-    public interface IExpressionCompute
-    {
-        Result ComputeResult(Expression expression);
-    }
-
+  
 }

@@ -50,7 +50,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ExpressionSolver.cs" />
     <Compile Include="Injectable.cs" />
     <Compile Include="Inject.cs" />
     <Compile Include="Interfaces.cs" />
@@ -58,6 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExpressionSolver\ExpressionSolver.csproj">
+      <Project>{378003c7-0d8f-46c9-aba8-4fdb1c19f68a}</Project>
+      <Name>ExpressionSolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OctopusContainer\OctopusContainer.csproj">
       <Project>{2c40f2ef-c853-42f0-acf8-690dce487a3c}</Project>
       <Name>OctopusContainer</Name>
@@ -66,6 +69,9 @@
       <Project>{000c6e27-2150-4e24-a3fc-e644d8ab4267}</Project>
       <Name>Octopus</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
