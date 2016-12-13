@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using Octopus.Container.Interfaces;
 
@@ -36,7 +35,7 @@ namespace Octopus.Container
         public void ScanAssemblyList(object @this, string[] locations, params Assembly[] assemblies)
         {
             Assembly calledFromAssembly = @this.GetType().Module.Assembly;
-           
+            _containerManager.ScanAssembly(calledFromAssembly);
 
             foreach (var location in locations)
             {
@@ -59,9 +58,6 @@ namespace Octopus.Container
             {
                 _containerManager.ScanAssembly(assembly);
             }
-
-            _containerManager.ScanAssembly(calledFromAssembly);
-
         }
 
         public void Init(object @this)

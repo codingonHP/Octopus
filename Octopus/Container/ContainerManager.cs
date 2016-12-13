@@ -14,6 +14,7 @@ namespace Octopus.Container
 
         }
         private readonly List<Type> _injectableTypes = new List<Type>();
+        private readonly List<string> _alreadyScannedAssembly = new List<string>();
         private static ContainerManager _instance;
 
         public static ContainerManager Instance
@@ -34,8 +35,13 @@ namespace Octopus.Container
 
         internal void ScanAssembly(Assembly calledFromAssembly)
         {
-            var foundInjectables = Finder.FindAllInjectables(calledFromAssembly);
-            AddToInjectableTypesCollection(foundInjectables);
+            if (!_alreadyScannedAssembly.Contains(calledFromAssembly.FullName))
+            {
+                var foundInjectables = Finder.FindAllInjectables(calledFromAssembly);
+                AddToInjectableTypesCollection(foundInjectables);
+                _alreadyScannedAssembly.Add(calledFromAssembly.FullName);
+            }
+           
         }
 
         internal void ActivateTypes(object @this, Type declaringType)

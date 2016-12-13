@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Octopus.Attributes;
 using Octopus.Container;
 
@@ -8,7 +7,7 @@ namespace ExpressionSolver
 {
     public class ExpressionSolver
     {
-        public string DefaultExtensionPath { get; set; }
+        public string []DefaultExtensionPath { get; set; }
         public string Expression { get; }
 
         [Inject]
@@ -19,14 +18,14 @@ namespace ExpressionSolver
 
         public ExpressionSolver(string expressionText)
         {
-            if (string.IsNullOrEmpty(DefaultExtensionPath))
+            if (DefaultExtensionPath == null || DefaultExtensionPath.Length == 0)
             {
-                DefaultExtensionPath = @"C:\Users\ANANDV4\Documents\Visual Studio 2015\Projects\Octopus\Octopus Unit Test\Extensions";
+                DefaultExtensionPath = new[] { @"C:\Users\ANANDV4\Documents\Visual Studio 2015\Projects\Octopus\Octopus Unit Test\Extensions" };
             }
             Expression = expressionText;
 
             Container container = Container.Instance;
-            container.Init(this,new []{ DefaultExtensionPath });
+            container.Init(this,DefaultExtensionPath);
         }
 
         public Result Solve()
