@@ -1,2 +1,2 @@
 # Octopus.NET
-Build extensible applications with Octopus.NET
+Attribute based dependency resolver at runtime
