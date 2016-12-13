@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Octopus.Container
+namespace Octopus.Container.Interfaces
 {
     public interface IContainer
     {

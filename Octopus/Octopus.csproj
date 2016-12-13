@@ -46,8 +46,8 @@
     <Compile Include="Container\ContainerFactory.cs" />
     <Compile Include="Container\ContainerManager.cs" />
     <Compile Include="Container\Finder.cs" />
-    <Compile Include="Container\IContainer.cs" />
-    <Compile Include="Container\IContainerFactory.cs" />
+    <Compile Include="Container\Interfaces\IContainer.cs" />
+    <Compile Include="Container\Interfaces\IContainerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

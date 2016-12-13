@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Octopus.Container.Interfaces;
 
 namespace Octopus.Container
 {

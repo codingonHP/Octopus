@@ -1,3 +1,5 @@
+using Octopus.Container.Interfaces;
+
 namespace Octopus.Container
 {
     public class ContainerFactory : IContainerFactory

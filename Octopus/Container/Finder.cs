@@ -10,7 +10,7 @@ namespace Octopus.Container
     {
         public static List<Type> FindAllInjectables(Assembly assembly)
         {
-            List<Type> injectables = new List<Type>(); // impl, interface
+            List<Type> injectables = new List<Type>(); 
             if (assembly == null)
             {
                 return null;

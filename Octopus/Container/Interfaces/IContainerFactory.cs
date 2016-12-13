@@ -1,4 +1,4 @@
-namespace Octopus.Container
+namespace Octopus.Container.Interfaces
 {
     public interface IContainerFactory
     {
