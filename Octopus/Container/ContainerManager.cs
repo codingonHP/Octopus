@@ -13,7 +13,7 @@ namespace Octopus.Container
         {
 
         }
-        private List<Type> _injectableTypes = new List<Type>();
+        private readonly List<Type> _injectableTypes = new List<Type>();
         private static ContainerManager _instance;
 
         public static ContainerManager Instance
