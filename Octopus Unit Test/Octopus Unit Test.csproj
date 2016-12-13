@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExpressionSolver.cs" />
     <Compile Include="Injectable.cs" />
     <Compile Include="Inject.cs" />
     <Compile Include="Interfaces.cs" />

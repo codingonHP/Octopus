@@ -21,5 +21,26 @@ namespace Octopus_Unit_Test
             var output = user.Login.ValidateLogin("vishal");
             Assert.AreEqual(true, output);
         }
+
+        [TestMethod]
+        public void ExpressionSolverTest()
+        {
+            ExpressionSolver expressionSolver = new ExpressionSolver("2+2");
+            var result = expressionSolver.Solve();
+
+            Assert.AreEqual(4, result.Output);
+
+            expressionSolver = new ExpressionSolver("2\\2");
+            result = expressionSolver.Solve();
+
+            Assert.AreEqual(false, result.Computed);
+            Assert.AreEqual("Symbol not recognized", result.Exception.Message);
+
+            expressionSolver = new ExpressionSolver("2*8");
+            result = expressionSolver.Solve();
+
+            Assert.AreEqual(true, result.Computed);
+            Assert.AreEqual(16,result.Output);
+        }
     }
 }

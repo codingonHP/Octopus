@@ -48,6 +48,7 @@
     <Compile Include="Container\Finder.cs" />
     <Compile Include="Container\Interfaces\IContainer.cs" />
     <Compile Include="Container\Interfaces\IContainerFactory.cs" />
+    <Compile Include="Container\TypeIdentifierHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
