@@ -16,6 +16,9 @@ namespace ExpressionSolver
         [Inject]
         public IExpressionParser ExpressionParser { get; set; }
 
+        [Inject]
+        public Dictionary<string, IExpressionCompute> ExpressionParsersDictionary { get; set; }
+
         public ExpressionSolver(string expressionText)
         {
             if (DefaultExtensionPath == null || DefaultExtensionPath.Length == 0)

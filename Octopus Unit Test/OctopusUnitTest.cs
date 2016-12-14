@@ -22,6 +22,14 @@ namespace Octopus_Unit_Test
         }
 
         [TestMethod]
+        public void ExpressionSolverInstantiatesWithAllInjectProperties()
+        {
+            ExpressionSolver.ExpressionSolver expressionSolver = new ExpressionSolver.ExpressionSolver("2+2");
+            Assert.IsNotNull(expressionSolver.ExpressionParsersDictionary);
+            Assert.AreEqual(3, expressionSolver.ExpressionParsersDictionary.Keys.Count);
+        }
+
+        [TestMethod]
         public void ExpressionSolverTest()
         {
             ExpressionSolver.ExpressionSolver expressionSolver = new ExpressionSolver.ExpressionSolver("2+2");

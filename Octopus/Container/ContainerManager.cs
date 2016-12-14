@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Octopus.Attributes;
+using Octopus.Container.Activation;
 
 namespace Octopus.Container
 {
@@ -46,54 +47,16 @@ namespace Octopus.Container
 
         internal void ActivateTypes(object @this, Type declaringType)
         {
+            ActivatorFactory activatorFactory = new ActivatorFactory();
+           
             var properties = declaringType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                                          .Where(p => p.GetCustomAttribute<InjectAttribute>() != null &&
-                                                        (p.PropertyType.IsInterface || p.PropertyType.IsAbstract ||
-                                                        (p.PropertyType.IsGenericType && p.PropertyType.Namespace == "System.Collections.Generic" && p.PropertyType.GenericTypeArguments.Length == 1)));
+                                          .Where(p => p.GetCustomAttribute<InjectAttribute>() != null );
 
             foreach (var propertyInfo in properties)
             {
-                switch (propertyInfo.PropertyType.GeTokenType())
-                {
-                    case TokenType.List:
-                        ActivateCollection(@this, propertyInfo);
-                        break;
-
-                    default:
-                        {
-                            var type = GetActivationType(propertyInfo);
-                            var instanceValue = Activator.CreateInstance(type);
-                            propertyInfo.SetValue(@this, instanceValue);
-
-                            break;
-                        }
-                }
+                var act = activatorFactory.GetActivatorForType(propertyInfo.PropertyType);
+                act.Activate(@this, propertyInfo,_injectableTypes);
             }
-        }
-
-        internal Type GetActivationType(PropertyInfo propertyInfo)
-        {
-            var type = _injectableTypes.FirstOrDefault(i => i.GetInterface(propertyInfo.PropertyType.Name) != null);
-            return type;
-        }
-
-        internal void ActivateCollection(object @this, PropertyInfo propertyInfo)
-        {
-          
-            Type genericArg = propertyInfo.PropertyType.GenericTypeArguments[0];
-            List<Type> typeList = _injectableTypes.Where(i => i.GetInterface(genericArg.Name) != null).ToList();
-
-            var collectionInstance = Activator.CreateInstance(propertyInfo.PropertyType);
-
-            foreach (var type in typeList)
-            {
-                var instanceValue = Activator.CreateInstance(type);
-                var addMethod = collectionInstance.GetType().GetMethod("Add");
-                addMethod.Invoke(collectionInstance, new[] { instanceValue });
-            }
-
-            propertyInfo.SetValue(@this, collectionInstance);
-          
         }
 
         internal void AddToInjectableTypesCollection(List<Type> foundInjectables)

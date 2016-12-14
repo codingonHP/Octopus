@@ -42,10 +42,16 @@
   <ItemGroup>
     <Compile Include="Attributes\InjectableAttribute.cs" />
     <Compile Include="Attributes\InjectAttribute.cs" />
+    <Compile Include="Container\Activation\Activate.cs" />
+    <Compile Include="Container\Activation\ActivatorFactory.cs" />
+    <Compile Include="Container\Activation\DictionaryActivator.cs" />
+    <Compile Include="Container\Activation\ListActivator.cs" />
+    <Compile Include="Container\Activation\SimpleTypeActivator.cs" />
     <Compile Include="Container\Container.cs" />
     <Compile Include="Container\ContainerFactory.cs" />
     <Compile Include="Container\ContainerManager.cs" />
     <Compile Include="Container\Finder.cs" />
+    <Compile Include="Container\Activation\IActivate.cs" />
     <Compile Include="Container\Interfaces\IContainer.cs" />
     <Compile Include="Container\Interfaces\IContainerFactory.cs" />
     <Compile Include="Container\TypeIdentifierHelper.cs" />
