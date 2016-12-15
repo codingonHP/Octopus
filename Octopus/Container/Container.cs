@@ -6,7 +6,11 @@ namespace Octopus.Container
 {
     public class Container : IContainer
     {
-        readonly ContainerManager _containerManager = ContainerManager.Instance;
+        private static readonly object Lock = new object();
+        private static Container _instance;
+        private Container() { }
+
+        public readonly ContainerManager ContainerManager = ContainerManager.Instance;
 
         public static Container Instance
         {
@@ -23,19 +27,11 @@ namespace Octopus.Container
                 return _instance;
             }
         }
-
-        public static object Lock = new object();
-        private static Container _instance;
-
-        private Container()
-        {
-
-        }
-
+       
         public void ScanAssemblyList(object @this, string[] locations, params Assembly[] assemblies)
         {
             Assembly calledFromAssembly = @this.GetType().Module.Assembly;
-            _containerManager.ScanAssembly(calledFromAssembly);
+            ContainerManager.ScanAssembly(calledFromAssembly);
 
             foreach (var location in locations)
             {
@@ -48,7 +44,7 @@ namespace Octopus.Container
                         if (Path.GetExtension(filePath) == ".dll")
                         {
                             var assembly = Assembly.LoadFile(filePath);
-                            _containerManager.ScanAssembly(assembly);
+                            ContainerManager.ScanAssembly(assembly);
                         }
                     }
                 }
@@ -56,7 +52,7 @@ namespace Octopus.Container
 
             foreach (var assembly in assemblies)
             {
-                _containerManager.ScanAssembly(assembly);
+                ContainerManager.ScanAssembly(assembly);
             }
         }
 
@@ -87,7 +83,7 @@ namespace Octopus.Container
         private void ActivateType(object @this)
         {
             var declaringType = @this.GetType();
-            _containerManager.ActivateTypes(@this, declaringType);
+            ContainerManager.ActivateTypes(@this, declaringType);
         }
 
 

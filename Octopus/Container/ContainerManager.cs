@@ -14,7 +14,7 @@ namespace Octopus.Container
         {
 
         }
-        private readonly List<Type> _injectableTypes = new List<Type>();
+        public readonly List<Type> InjectableTypes = new List<Type>();
         private readonly List<string> _alreadyScannedAssembly = new List<string>();
         private static ContainerManager _instance;
 
@@ -42,20 +42,20 @@ namespace Octopus.Container
                 AddToInjectableTypesCollection(foundInjectables);
                 _alreadyScannedAssembly.Add(calledFromAssembly.FullName);
             }
-           
+
         }
 
         internal void ActivateTypes(object @this, Type declaringType)
         {
             ActivatorFactory activatorFactory = new ActivatorFactory();
-           
+
             var properties = declaringType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                                          .Where(p => p.GetCustomAttribute<InjectAttribute>() != null );
+                                          .Where(p => p.GetCustomAttribute<InjectAttribute>() != null);
 
             foreach (var propertyInfo in properties)
             {
                 var act = activatorFactory.GetActivatorForType(propertyInfo.PropertyType);
-                act.Activate(@this, propertyInfo,_injectableTypes);
+                act.Activate(@this, propertyInfo, InjectableTypes);
             }
         }
 
@@ -63,9 +63,9 @@ namespace Octopus.Container
         {
             foreach (var foundInjectable in foundInjectables)
             {
-                if (_injectableTypes.FirstOrDefault(t => t.FullName == foundInjectable.FullName) == null)
+                if (InjectableTypes.FirstOrDefault(t => t.FullName == foundInjectable.FullName) == null)
                 {
-                    _injectableTypes.Add(foundInjectable);
+                    InjectableTypes.Add(foundInjectable);
                 }
             }
         }

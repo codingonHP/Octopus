@@ -30,10 +30,9 @@ namespace Octopus.Container.Activation
                 else
                 {
                     //TODO : Need some work here
-                    var act = activatorFactory.GetActivatorForType(keyArg);
-                    addMethod.Invoke(collectionInstance, new[] { Initialize(keyArg), instanceValue });
+                    //var act = activatorFactory.GetActivatorForType(keyArg);
+                    //addMethod.Invoke(collectionInstance, new[] { Initialize(keyArg), instanceValue });
                 }
-                   
             }
 
             if (@this != null)
