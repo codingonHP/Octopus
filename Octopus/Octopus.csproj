@@ -59,6 +59,7 @@
     <Compile Include="Tree\Tree.cs" />
     <Compile Include="Tree\TreeArgs.cs" />
     <Compile Include="Tree\TreeNode.cs" />
+    <Compile Include="Tree\Walker.cs" />
     <Compile Include="TypeWalker\TreeConstructor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
